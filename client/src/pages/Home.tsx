@@ -37,12 +37,12 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section - Asymmetric with diagonal energy */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-foreground/95 to-foreground">
-        {/* Background Image with Overlay */}
+        {/* Background Image with Ken Burns effect */}
         <div className="absolute inset-0">
-          <img 
-            src={HERO_IMAGE} 
-            alt="Cricket Action" 
-            className="w-full h-full object-cover opacity-30"
+          <img
+            src={HERO_IMAGE}
+            alt="Cricket Action"
+            className="w-full h-full object-cover opacity-30 hero-ken-burns"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 to-foreground/60"></div>
         </div>
@@ -50,23 +50,36 @@ export default function Home() {
         {/* Content */}
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-block mb-4 px-4 py-2 bg-primary/20 border border-primary/40 rounded-md">
-              <span className="text-primary text-sm font-semibold tracking-wider uppercase" style={{ fontFamily: 'var(--font-accent)' }}>
+            <div
+              className="hero-fade-in-up inline-flex items-center gap-2 mb-4 px-5 py-2.5 bg-primary/20 border-2 border-primary/50 rounded-md backdrop-blur-sm"
+              style={{ animationDelay: '0.2s' }}
+            >
+              <span className="w-2 h-2 rounded-full bg-primary"></span>
+              <span className="text-primary text-sm font-bold tracking-widest uppercase" style={{ fontFamily: 'var(--font-accent)' }}>
                 Est. 2019 • London
               </span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-none" style={{ fontFamily: 'var(--font-display)' }}>
+
+            <h1
+              className="hero-fade-in-up text-5xl md:text-7xl lg:text-8xl text-white mb-2 leading-none"
+              style={{ fontFamily: 'var(--font-display)', animationDelay: '0.4s' }}
+            >
               LONDON<br />DESPERADOS
             </h1>
-            
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl" style={{ fontFamily: 'var(--font-subheading)' }}>
+
+            {/* Animated accent line */}
+            <div className="hero-accent-line w-24 h-1 bg-primary mb-6 rounded-full"></div>
+
+            <p
+              className="hero-fade-in-up text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl"
+              style={{ fontFamily: 'var(--font-subheading)', animationDelay: '0.6s' }}
+            >
               A friendly, sociable and inclusive club fostering cricketing excellence in the heart of London.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
+
+            <div className="hero-fade-in-up flex flex-col sm:flex-row gap-4" style={{ animationDelay: '0.8s' }}>
               <Link href="/contact">
-                <Button size="lg" variant="default" className="text-base font-semibold" style={{ fontFamily: 'var(--font-subheading)' }}>
+                <Button size="lg" variant="default" className="hero-pulse-glow text-base font-semibold" style={{ fontFamily: 'var(--font-subheading)' }}>
                   Join Our Club
                 </Button>
               </Link>
