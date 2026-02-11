@@ -67,7 +67,7 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-background">
+      <section className="pt-20 pb-36 bg-background">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: 'var(--font-display)' }}>

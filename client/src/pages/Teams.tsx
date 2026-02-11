@@ -71,7 +71,7 @@ export default function Teams() {
       </section>
 
       {/* Teams Section */}
-      <section className="py-20 bg-background">
+      <section className="pt-20 pb-36 bg-background">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {teams.map((team, index) => (

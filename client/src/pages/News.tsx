@@ -75,7 +75,7 @@ export default function News() {
       </section>
 
       {/* News Grid */}
-      <section className="py-20 bg-background">
+      <section className="pt-20 pb-36 bg-background">
         <div className="container max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {newsArticles.map((article, index) => (
