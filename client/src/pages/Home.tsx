@@ -108,26 +108,26 @@ export default function Home() {
       </section>
 
       {/* Achievements Section - Diagonal with celebration image */}
-      <section className="relative py-24 bg-secondary text-secondary-foreground diagonal-both">
+      <section className="relative py-24 pt-32 pb-36 lg:py-24 bg-secondary text-secondary-foreground diagonal-both">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Instagram Reel */}
             <div className="order-2 lg:order-1">
-              <div className="flex justify-center">
-                <div className="relative" style={{ width: '400px', maxWidth: '100%' }}>
-                  <div className="rounded-lg shadow-2xl overflow-hidden" style={{ height: '600px' }}>
+              <div className="flex justify-center px-4 sm:px-0">
+                <div className="relative w-full" style={{ maxWidth: '400px' }}>
+                  <div className="rounded-lg shadow-2xl overflow-hidden" style={{ height: 'clamp(400px, 80vw, 600px)' }}>
                     <iframe
                       src="https://www.instagram.com/reel/DBg8UzpCCXa/embed/?hidecaption=true"
-                      className="border-0"
-                      style={{ width: '100%', height: '750px' }}
+                      className="border-0 w-full"
+                      style={{ height: 'clamp(500px, 100vw, 750px)' }}
                       scrolling="no"
                       allowFullScreen
                       title="London Desperados Achievement Reel"
                     />
                   </div>
-                  <div className="absolute -bottom-8 -right-8 bg-primary text-primary-foreground p-6 rounded-lg shadow-xl z-10">
-                    <div className="text-4xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>2024</div>
-                    <div className="text-sm uppercase tracking-wider" style={{ fontFamily: 'var(--font-accent)' }}>Champions</div>
+                  <div className="absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 bg-primary text-primary-foreground p-4 sm:p-6 rounded-lg shadow-xl z-10">
+                    <div className="text-2xl sm:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>2024</div>
+                    <div className="text-xs sm:text-sm uppercase tracking-wider" style={{ fontFamily: 'var(--font-accent)' }}>Champions</div>
                   </div>
                 </div>
               </div>
