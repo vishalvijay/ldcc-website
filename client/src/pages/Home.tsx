@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-background">
+      <section className="pt-8 pb-28 bg-background">
         <div className="container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
