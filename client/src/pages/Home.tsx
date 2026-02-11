@@ -111,17 +111,24 @@ export default function Home() {
       <section className="relative py-24 bg-secondary text-secondary-foreground diagonal-both">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Image */}
+            {/* Instagram Reel */}
             <div className="order-2 lg:order-1">
-              <div className="relative">
-                <img 
-                  src={TEAM_CELEBRATION} 
-                  alt="Team Celebration" 
-                  className="w-full h-[400px] object-cover rounded-lg shadow-2xl"
-                />
-                <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-lg shadow-xl">
-                  <div className="text-4xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>2024</div>
-                  <div className="text-sm uppercase tracking-wider" style={{ fontFamily: 'var(--font-accent)' }}>Champions</div>
+              <div className="flex justify-center">
+                <div className="relative" style={{ width: '400px', maxWidth: '100%' }}>
+                  <div className="rounded-lg shadow-2xl overflow-hidden" style={{ height: '600px' }}>
+                    <iframe
+                      src="https://www.instagram.com/reel/DBg8UzpCCXa/embed/?hidecaption=true"
+                      className="border-0"
+                      style={{ width: '100%', height: '750px' }}
+                      scrolling="no"
+                      allowFullScreen
+                      title="London Desperados Achievement Reel"
+                    />
+                  </div>
+                  <div className="absolute -bottom-8 -right-8 bg-primary text-primary-foreground p-6 rounded-lg shadow-xl z-10">
+                    <div className="text-4xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>2024</div>
+                    <div className="text-sm uppercase tracking-wider" style={{ fontFamily: 'var(--font-accent)' }}>Champions</div>
+                  </div>
                 </div>
               </div>
             </div>
