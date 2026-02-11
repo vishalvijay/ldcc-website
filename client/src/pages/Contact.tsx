@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Instagram, Users } from "lucide-react";
 import { useState } from "react";
-import { toast } from "sonner";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -20,8 +19,9 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you for your message! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    const body = `Hi,\n\nMy name is ${formData.name}.\n\n${formData.message}\n\nReply to: ${formData.email}`;
+    const mailto = `mailto:londondesperados@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
   };
 
   const contacts = [
