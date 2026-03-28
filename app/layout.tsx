@@ -3,6 +3,8 @@ import { Bebas_Neue, Roboto_Condensed, Inter, Oswald } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -48,6 +50,8 @@ export default function RootLayout({
           {children}
           <Footer />
         </ErrorBoundary>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
