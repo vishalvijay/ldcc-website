@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Award, TrendingUp } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const TEAM_CELEBRATION = "https://private-us-east-1.manuscdn.com/sessionFile/AQDYF8wraUGo4QcrPvkcIB/sandbox/Wcnfxd7EHUsL9LTbc5D6Si-img-2_1770505564000_na1fn_dGVhbS1jZWxlYnJhdGlvbg.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvQVFEWUY4d3JhVUdvNFFjclB2a2NJQi9zYW5kYm94L1djbmZ4ZDdFSFVzTDlMVGJjNUQ2U2ktaW1nLTJfMTc3MDUwNTU2NDAwMF9uYTFmbl9kR1ZoYlMxalpXeGxZbkpoZEdsdmJnLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=MhyRBc~T3ij~gpnHx4XnyaSUz90NigaydbkspFAhRTQR~v202tPn0KQQMVbgBzNtYnJSiQRET5qwMSZ3XIRu71yeaCdEGFkXLpien-UXR5tRY3NNPOWILerd-NrQhtM9GHTJYOKPjIVeYTOjWdoItR~-9a7uXP8shpvpyjgwftOOK0W44JnEwpwCMvkldXS2mJtkIJsAwLPqkq67ZUy9NLDnKyHmi~DqCSFOvdsS1IUUS5lG9-dHp9UKXCXScj1XXlYWhlSyfulyvTD7IBccYhwZkeQrC6~9jNO5hIrRd75dLMskDdHFGlXK7JREjcNKZN~eNcmUAT4wS3VZP3D4Gw__";
 
@@ -62,11 +63,12 @@ export default function Teams() {
       </section>
 
       {/* Teams Section */}
-      <section className="pt-20 pb-36 bg-background">
+      <section className="pt-20 pb-36 bg-background bg-dots">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {teams.map((team, index) => (
-              <Card key={index} className="border-2 hover:border-primary transition-colors">
+              <ScrollReveal key={index} delay={index * 150}>
+              <Card className="border-2 card-hover-lift hover:border-primary">
                 <CardContent className="p-8">
                   <div className="flex items-start justify-between mb-6">
                     <div>
@@ -110,6 +112,7 @@ export default function Teams() {
                   </p>
                 </CardContent>
               </Card>
+              </ScrollReveal>
             ))}
           </div>
         </div>

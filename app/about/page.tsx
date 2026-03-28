@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Users, Heart, Target } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const CRICKET_PITCH = "https://private-us-east-1.manuscdn.com/sessionFile/AQDYF8wraUGo4QcrPvkcIB/sandbox/Wcnfxd7EHUsL9LTbc5D6Si-img-3_1770505571000_na1fn_Y3JpY2tldC1waXRjaC1hZXJpYWw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvQVFEWUY4d3JhVUdvNFFjclB2a2NJQi9zYW5kYm94L1djbmZ4ZDdFSFVzTDlMVGJjNUQ2U2ktaW1nLTNfMTc3MDUwNTU3MTAwMF9uYTFmbl9ZM0pwWTJ0bGRDMXdhWFJqYUMxaFpYSnBZV3cucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=kNyMIg4Db5x8BfevEYMwGTtQWzoEjr~~jDlqV95zHSDhxhchjBWo8bbX-Lri~jqqzhfl9TcGrssD9iMUO8LvGRKwrK0yBL4NpX60xl1hFhvuMc3fXRijIn-VA3Q3s-WLeyyFLWx3A2moDogRCbUpiUTqjspu1m8t4VkiWlCIufHZCk7-uakwrwKY6bHoZ~XLIp95wYlT5F3ibbz9OhCr4wJSuujTkf-vmknOxg9Ne6J36OPEA06A3fJ13h3LV0AtT3-7nmuAL81AP23cHvriGPcxtaCQCagyOk7gTWdIkwRlNMPlaqwnOK~IBI1W-imanq1xsKZKf7eioWplfSmWjA__";
 
@@ -29,10 +30,11 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-foreground to-foreground/90 text-white overflow-hidden">
+      <section className="relative py-28 bg-gradient-to-br from-foreground to-foreground/90 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img src={CRICKET_PITCH} alt="Cricket Pitch" className="w-full h-full object-cover" />
         </div>
+        <div className="absolute inset-0 bg-dots opacity-20"></div>
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl mb-6" style={{ fontFamily: 'var(--font-display)' }}>
@@ -47,25 +49,28 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="pt-20 pb-36 bg-background">
+      <section className="pt-20 pb-36 bg-background bg-dots">
         <div className="container">
+          <ScrollReveal>
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+            <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: 'var(--font-display)' }}>
               OUR MISSION
             </h2>
+            <div className="glow-divider w-24 mx-auto mb-6"></div>
             <p className="text-xl text-muted-foreground leading-relaxed">
               We are a friendly, sociable and inclusive club of Cricket Enthusiasts who share a passion for Cricket&mdash;be it playing, watching, discussing or celebrating it. We are a group of diverse individuals who come together under the community called Cricket. Anyone with similar interests and willing to join us is welcome.
             </p>
           </div>
+          </ScrollReveal>
 
           {/* Values Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <Card key={index} className="border-2 hover:border-primary transition-colors">
+                <Card key={index} className="border-2 card-hover-lift hover:border-primary">
                   <CardContent className="p-6 text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
                       <Icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-bold mb-3" style={{ fontFamily: 'var(--font-display)' }}>

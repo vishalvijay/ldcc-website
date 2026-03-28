@@ -281,3 +281,91 @@
   animation: pulseGlow 2.5s ease-in-out infinite;
   animation-delay: 1.5s;
 }
+
+/* Scroll reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced card hover effects */
+.card-hover-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px oklch(0 0 0 / 0.15);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, oklch(0.55 0.22 27), oklch(0.65 0.20 30));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(4px) rotate(-1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Shimmer effect for highlight badges */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-badge {
+  background: linear-gradient(
+    110deg,
+    oklch(0.55 0.22 27) 0%,
+    oklch(0.65 0.18 30) 40%,
+    oklch(0.55 0.22 27) 60%,
+    oklch(0.55 0.22 27) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Glass card style */
+.glass-card {
+  background: oklch(1 0 0 / 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(1 0 0 / 0.2);
+}
+
+/* Subtle background patterns */
+.bg-dots {
+  background-image: radial-gradient(oklch(0.55 0.22 27 / 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(oklch(0.55 0.22 27 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.55 0.22 27 / 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Section separator with glow */
+.glow-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, oklch(0.55 0.22 27 / 0.5), transparent);
+}

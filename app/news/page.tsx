@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const LONDON_GROUND = "https://private-us-east-1.manuscdn.com/sessionFile/AQDYF8wraUGo4QcrPvkcIB/sandbox/Wcnfxd7EHUsL9LTbc5D6Si-img-5_1770505556000_na1fn_bG9uZG9uLWNyaWNrZXQtZ3JvdW5k.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvQVFEWUY4d3JhVUdvNFFjclB2a2NJQi9zYW5kYm94L1djbmZ4ZDdFSFVzTDlMVGJjNUQ2U2ktaW1nLTVfMTc3MDUwNTU1NjAwMF9uYTFmbl9iRzl1Wkc5dUxXTnlhV05yWlhRdFozSnZkVzVrLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Wlci0vd~1JOVUKJXaoheql28L5gM6y~byl~XvxfxP2zKGb3UXMf~T1EDEQORb6rbdaRAgebHPppxuzYN7EGR61QV1eK6gggpDXGDEYyRZ~vhP9v4MdGTp6-KpYdRqxCoteDV19w59KWiczFBn9QSbKdxZz6DgD4Yj0HAlj9id~7xVi22ynrz~zDEcZ6tyVTj9RCbdXkTDsd~5HDryoDyPGGVlX2dIw36AGMCUjjjcQCpU4OszuR404nf9eitpGEShme37SS-GOEFWHwhl0XWoXPKsbRI8FdQWqFks6cAt92EqS5B8JTGApJeayw23~BtkFzFEY0wwdRH4w3OXotdnQ__";
 
@@ -71,11 +72,12 @@ export default function News() {
       </section>
 
       {/* News Grid */}
-      <section className="pt-20 pb-36 bg-background">
+      <section className="pt-20 pb-36 bg-background bg-dots">
         <div className="container max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {newsArticles.map((article, index) => (
-              <Card key={index} className="border-2 hover:border-primary transition-all group overflow-hidden">
+              <ScrollReveal key={index} delay={index * 100}>
+              <Card className="border-2 card-hover-lift hover:border-primary group overflow-hidden h-full">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={article.image}
@@ -105,6 +107,7 @@ export default function News() {
                   </Button>
                 </CardContent>
               </Card>
+              </ScrollReveal>
             ))}
           </div>
         </div>
