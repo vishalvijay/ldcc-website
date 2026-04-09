@@ -79,13 +79,30 @@ function normalizeResult(match: PlayCricketResult): MatchResult {
   const ourTeamId = isHome ? match.home_team_id : match.away_team_id;
   const theirTeamId = isHome ? match.away_team_id : match.home_team_id;
 
-  const resultDesc = match.result_description || match.result || "";
+  // result_applied_to is the team ID of the winner
   const isWin =
-    resultDesc.toLowerCase().includes("won") &&
-    (match.result_applied_to
-      ? (isHome && match.result_applied_to === "home") ||
-        (!isHome && match.result_applied_to === "away")
-      : true);
+    match.result === "W" &&
+    String(match.result_applied_to) === String(ourTeamId);
+
+  // Build a readable result string from result_description
+  // e.g. "London Desperados CC - 1st XI - Won" → "Won"
+  const resultDesc = match.result_description || "";
+  let displayResult = resultDesc;
+  if (isWin) {
+    displayResult = "Won";
+  } else if (match.result === "W") {
+    displayResult = "Lost";
+  } else if (match.result === "L") {
+    displayResult = "Lost";
+  } else if (match.result === "C") {
+    displayResult = "Cancelled";
+  } else if (match.result === "A") {
+    displayResult = "Abandoned";
+  } else if (match.result === "D") {
+    displayResult = "Draw";
+  } else if (match.result === "T") {
+    displayResult = "Tied";
+  }
 
   return {
     id: match.id,
@@ -93,10 +110,10 @@ function normalizeResult(match: PlayCricketResult): MatchResult {
     rawDate,
     team: team.replace(/London Desperados\s*-?\s*/i, "").trim() || "1st XI",
     opponent,
-    result: resultDesc,
+    result: displayResult,
     ourScore: formatScore(match.innings || [], ourTeamId),
     theirScore: formatScore(match.innings || [], theirTeamId),
-    competition: match.competition_name || match.league_name || "League",
+    competition: match.competition_name || match.league_name || "Friendly",
     isWin,
   };
 }
@@ -133,6 +150,20 @@ export async function fetchResults(
   const year = season || new Date().getFullYear();
   const token = getApiToken();
 
+  const results = await fetchResultsForSeason(year, token);
+
+  // If no played results this season, fetch last season
+  if (results.length === 0 && !season) {
+    return fetchResultsForSeason(year - 1, token);
+  }
+
+  return results;
+}
+
+async function fetchResultsForSeason(
+  year: number,
+  token: string
+): Promise<MatchResult[]> {
   const url = `${API_BASE}/result_summary.json?site_id=${SITE_ID}&season=${year}&api_token=${token}`;
 
   const res = await fetch(url, { next: { revalidate: 900 } });
@@ -146,6 +177,6 @@ export async function fetchResults(
 
   return matches
     .map(normalizeResult)
-    .filter((r) => r.result && r.result.trim() !== "")
+    .filter((r) => r.result !== "Cancelled" && r.result !== "Abandoned")
     .sort((a, b) => b.rawDate.getTime() - a.rawDate.getTime());
 }

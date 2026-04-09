@@ -4,16 +4,9 @@ import { Trophy } from "lucide-react";
 import { fetchFixtures } from "@/lib/play-cricket";
 import HomeFixtures from "@/components/HomeFixtures";
 import HomeStats from "@/components/HomeStats";
-import type { Fixture } from "@/types/cricket";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const HERO_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/AQDYF8wraUGo4QcrPvkcIB/sandbox/Wcnfxd7EHUsL9LTbc5D6Si-img-1_1770505560000_na1fn_aGVyby1jcmlja2V0LWFjdGlvbg.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvQVFEWUY4d3JhVUdvNFFjclB2a2NJQi9zYW5kYm94L1djbmZ4ZDdFSFVzTDlMVGJjNUQ2U2ktaW1nLTFfMTc3MDUwNTU2MDAwMF9uYTFmbl9hR1Z5YnkxamNtbGphMlYwTFdGamRHbHZiZy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Z6UIcxMLhtCfCyS8hkCGl0UB5RrhWINyzja5p5CjRSUmUIDydmIgj-rNvOon8PK3HH-itxeSNtWogaiSC~qe5NWp3BH9yc2YXhOMsYlrbzLdukCKC0H-7IjCRYPvzCVG0iJEXJq9YCk6U3R-EpakbSphVYS55VDMpaTOoLvTMsp3OgJMvmN8OnW7RcwlhQeAxclJEACbEdCv7kANlEnEH1Afz09NHdwsUxL-Hd9A~aHW~oImhvIXssaDYmd35cUHjhXcUiX7e1-6bcS3DZeK1MDHAcuTVgTKBUGF0T7TanyhID93q7Rw4~2AoQUN2j4zcjIwlR6mMJiWWNUqG2n0Yg__";
-
-const fallbackFixtures: Fixture[] = [
-  { id: 1, date: "Saturday, 9 May 2026", time: "12:30 PM", rawDate: new Date(2026, 4, 9), team: "1st XI", opponent: "New Calypsonians CC", venue: "Home Ground", competition: "MCCL Division Five", isHome: true },
-  { id: 2, date: "Saturday, 16 May 2026", time: "12:30 PM", rawDate: new Date(2026, 4, 16), team: "1st XI", opponent: "Peshwa CC", venue: "Away", competition: "MCCL Division Five", isHome: false },
-  { id: 3, date: "Saturday, 23 May 2026", time: "12:30 PM", rawDate: new Date(2026, 4, 23), team: "1st XI", opponent: "London Superkings CC", venue: "Home Ground", competition: "MCCL Division Five", isHome: true },
-];
 
 const achievements = [
   { year: "2024", title: "MCCL Division 6 Champions", team: "1st XI" },
@@ -23,14 +16,7 @@ const achievements = [
 ];
 
 export default async function Home() {
-  let fixtures: Fixture[];
-  try {
-    const allFixtures = await fetchFixtures();
-    fixtures = allFixtures.slice(0, 3);
-    if (fixtures.length === 0) fixtures = fallbackFixtures;
-  } catch {
-    fixtures = fallbackFixtures;
-  }
+  const fixtures = (await fetchFixtures().catch(() => [])).slice(0, 3);
 
   return (
     <div className="min-h-screen">

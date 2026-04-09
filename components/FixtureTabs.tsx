@@ -30,7 +30,8 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
           </div>
         ) : (
           fixtures.map((fixture) => (
-            <Card key={fixture.id} className="border-2 hover:border-primary transition-colors">
+            <a key={fixture.id} href={`https://londondesperados.play-cricket.com/website/results/${fixture.id}`} target="_blank" rel="noopener noreferrer" className="block">
+            <Card className="border-2 hover:border-primary transition-colors cursor-pointer">
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-[1fr_2fr_1fr] gap-6 items-center">
                   {/* Date & Time */}
@@ -79,6 +80,7 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
                 </div>
               </CardContent>
             </Card>
+            </a>
           ))
         )}
 
@@ -105,7 +107,8 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
           </div>
         ) : (
           results.map((result) => (
-            <Card key={result.id} className={`border-2 ${result.isWin ? 'border-primary/30 bg-primary/5' : 'border-border'}`}>
+            <a key={result.id} href={`https://londondesperados.play-cricket.com/website/results/${result.id}`} target="_blank" rel="noopener noreferrer" className="block">
+            <Card className={`border-2 cursor-pointer ${result.isWin ? 'border-primary/30 bg-primary/5' : 'border-border'}`}>
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-[1fr_2fr_1fr] gap-6 items-center">
                   {/* Date */}
@@ -152,6 +155,7 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
                 </div>
               </CardContent>
             </Card>
+            </a>
           ))
         )}
 
