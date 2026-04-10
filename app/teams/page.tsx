@@ -144,13 +144,13 @@ export default function Teams() {
                       <div className="text-sm text-primary font-semibold uppercase tracking-wider mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
                         {record.title}
                       </div>
-                      <div className="text-3xl font-bold mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                      <div className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                         {record.stat}
                       </div>
-                      <div className="text-lg font-semibold mb-1" style={{ fontFamily: 'var(--font-subheading)' }}>
+                      <div className="text-lg font-semibold text-secondary-foreground mb-1" style={{ fontFamily: 'var(--font-subheading)' }}>
                         {record.player}
                       </div>
-                      <div className="text-sm text-secondary-foreground/70">
+                      <div className="text-sm text-secondary-foreground/80">
                         {record.team}
                       </div>
                     </CardContent>
@@ -172,13 +172,13 @@ export default function Teams() {
                       <div className="text-sm text-primary font-semibold uppercase tracking-wider mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
                         {record.title}
                       </div>
-                      <div className="text-3xl font-bold mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                      <div className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                         {record.stat}
                       </div>
-                      <div className="text-lg font-semibold mb-1" style={{ fontFamily: 'var(--font-subheading)' }}>
+                      <div className="text-lg font-semibold text-secondary-foreground mb-1" style={{ fontFamily: 'var(--font-subheading)' }}>
                         {record.player}
                       </div>
-                      <div className="text-sm text-secondary-foreground/70">
+                      <div className="text-sm text-secondary-foreground/80">
                         {record.team}
                       </div>
                     </CardContent>
