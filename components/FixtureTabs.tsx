@@ -1,9 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Clock, Trophy } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Fixture, MatchResult } from "@/types/cricket";
+
+const INITIAL_COUNT = 10;
 
 interface FixtureTabsProps {
   fixtures: Fixture[];
@@ -11,6 +15,12 @@ interface FixtureTabsProps {
 }
 
 export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
+  const [showAllFixtures, setShowAllFixtures] = useState(false);
+  const [showAllResults, setShowAllResults] = useState(false);
+
+  const visibleFixtures = showAllFixtures ? fixtures : fixtures.slice(0, INITIAL_COUNT);
+  const visibleResults = showAllResults ? results : results.slice(0, INITIAL_COUNT);
+
   return (
     <Tabs defaultValue="upcoming" className="w-full">
       <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
@@ -29,7 +39,7 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
             <p className="text-muted-foreground text-lg">No upcoming fixtures scheduled.</p>
           </div>
         ) : (
-          fixtures.map((fixture) => (
+          visibleFixtures.map((fixture) => (
             <a key={fixture.id} href={`https://londondesperados.play-cricket.com/website/results/${fixture.id}`} target="_blank" rel="noopener noreferrer" className="block">
             <Card className="border-2 hover:border-primary transition-colors cursor-pointer">
               <CardContent className="p-6">
@@ -84,6 +94,14 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
           ))
         )}
 
+        {!showAllFixtures && fixtures.length > INITIAL_COUNT && (
+          <div className="text-center mt-8">
+            <Button variant="outline" size="lg" onClick={() => setShowAllFixtures(true)}>
+              Show All Fixtures ({fixtures.length - INITIAL_COUNT} more)
+            </Button>
+          </div>
+        )}
+
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
             For the complete fixture list and live scores, visit our Play-Cricket profile
@@ -106,7 +124,7 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
             <p className="text-muted-foreground text-lg">No results available yet.</p>
           </div>
         ) : (
-          results.map((result) => (
+          visibleResults.map((result) => (
             <a key={result.id} href={`https://londondesperados.play-cricket.com/website/results/${result.id}`} target="_blank" rel="noopener noreferrer" className="block">
             <Card className={`border-2 cursor-pointer ${result.isWin ? 'border-primary/30 bg-primary/5' : 'border-border'}`}>
               <CardContent className="p-6">
@@ -157,6 +175,14 @@ export default function FixtureTabs({ fixtures, results }: FixtureTabsProps) {
             </Card>
             </a>
           ))
+        )}
+
+        {!showAllResults && results.length > INITIAL_COUNT && (
+          <div className="text-center mt-8">
+            <Button variant="outline" size="lg" onClick={() => setShowAllResults(true)}>
+              Show All Results ({results.length - INITIAL_COUNT} more)
+            </Button>
+          </div>
         )}
 
         <div className="text-center mt-12">
